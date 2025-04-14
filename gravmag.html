@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script src="three.min.js"></script>
+<script src="OrbitControls.js"></script>
+<link rel="stylesheet" type="text/css" href="gmstyle.css">
+<body>
+
+
+<div id = "anim" style="position:fixed; top: 100px;" />
+<script>
+
+
+    var w0 = 0.02;
+    var fra = 0.1;
+    var fra2 = 0.3;
+
+    var scene, camera, renderer;
+    var controls;
+    var Earth, material, mesh;
+    var r1g, r2g, r1, rcol;
+    var angle1;
+    init();
+    animate();
+
+
+var container = document.getElementById( 'anim' );
+
+container.addEventListener("mousewheel",render);
+    function init() {
+
+
+	
+	angle1 = 0;
+	var r33mat = new THREE.Matrix4();
+        scene = new THREE.Scene();
+
+        camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera.position.z = fra*550;
+
+	
+	controls = new THREE.OrbitControls( camera,container );
+        controls.addEventListener( 'change', render );
+
+
+	var axis = new THREE.Vector3(0,0.4714,0.3333);
+
+        Earth = new THREE.SphereGeometry( fra*200, fra*200, fra*200 );
+	Earth2 = new THREE.SphereGeometry( fra*200, fra*200, fra*200 );
+
+	loader = new THREE.TextureLoader();
+	
+
+      	material = new THREE.MeshBasicMaterial( {color: 0x5bad49} );
+	material.wireframe = true;
+	material2 = new THREE.MeshBasicMaterial({color: 0xd4aea});
+	material2.transparent = true;
+	material2.opacity = 0.5;
+	
+
+        mesh = new THREE.Mesh( Earth, material );
+	mesh2 = new THREE.Mesh( Earth2, material2 ); 
+        scene.add( mesh );
+	scene.add ( mesh2 );
+	
+	
+
+	r1g = new THREE.BoxGeometry(fra*2,fra*2,fra*10);
+	r3g = new THREE.BoxGeometry(fra*2,fra*10,fra*2);
+
+
+	rcol = new THREE.MeshBasicMaterial( {color: 0xff0000} );
+	r1 = new THREE.Mesh(r1g,rcol);
+	r1.position.x = fra*250;
+	scene.add(r1);
+
+	
+	r2 = new THREE.Mesh(r1g,rcol);
+	r2.position.x = fra*300;
+	scene.add(r2);
+
+
+	r3 = new THREE.Mesh(r1g,rcol);
+	r3.position.x = fra*350;
+	scene.add(r3);
+
+
+	r4 = new THREE.Mesh(r1g,rcol);
+	r4.position.x = fra*400;
+	scene.add(r4);
+
+	r5 = new THREE.Mesh(r1g,rcol);
+	r5.position.y = fra*250;
+	scene.add(r5);
+
+	r6 = new THREE.Mesh(r1g,rcol);
+	r6.position.y = fra*300;
+	scene.add(r6);
+
+	r7 = new THREE.Mesh(r1g,rcol);
+	r7.position.y = fra*350;
+	scene.add(r7);
+
+
+	r8 = new THREE.Mesh(r1g,rcol);
+	r8.position.y = fra*400;
+	scene.add(r8);
+
+	r9 = new THREE.Mesh(r1g,rcol);
+	r9.position.y = -fra*250;
+	scene.add(r9);
+
+	r10 = new THREE.Mesh(r1g,rcol);
+	r10.position.y = -fra*300;
+	scene.add(r10);
+
+	r11 = new THREE.Mesh(r1g,rcol);
+	r11.position.y = -fra*350;
+	scene.add(r11);
+
+
+	r12 = new THREE.Mesh(r1g,rcol);
+	r12.position.y = -fra*400;
+	scene.add(r12);
+
+	
+	r13 = new THREE.Mesh(r3g,rcol);
+	r13.position.x = fra*144.33;
+	r13.position.y = fra*204.12;
+	scene.add(r13);
+
+	r14 = new THREE.Mesh(r3g,rcol);
+	r14.position.x = fra*144.33*300/250;
+	r14.position.y = fra*204.12*300/250;
+	scene.add(r14);
+
+	r15 = new THREE.Mesh(r3g,rcol);
+	r15.position.x = fra*144.33*350/250;
+	r15.position.y = fra*204.12*350/250;
+	scene.add(r15);
+
+	r16 = new THREE.Mesh(r3g,rcol);
+	r16.position.x = fra*144.33*400/250;
+	r16.position.y = fra*204.12*400/250;
+	scene.add(r16);
+
+	r17 = new THREE.Mesh(r3g,rcol);
+	r17.position.x = fra*144.33;
+	r17.position.y = -fra*204.12;
+	scene.add(r17);
+
+	r18 = new THREE.Mesh(r3g,rcol);
+	r18.position.x = fra*144.33*300/250;
+	r18.position.y = -fra*204.12*300/250;
+	scene.add(r18);
+
+	r19 = new THREE.Mesh(r3g,rcol);
+	r19.position.x = fra*144.33*350/250;
+	r19.position.y = -fra*204.12*350/250;
+	scene.add(r19);
+
+	r20 = new THREE.Mesh(r3g,rcol);
+	r20.position.x = fra*144.33*400/250;
+	r20.position.y = -fra*204.12*400/250;
+	scene.add(r20);
+
+
+	r21 = new THREE.Mesh(r3g,rcol);
+	r21.position.x = -fra*144.33;
+	r21.position.y = -fra*204.12;
+	scene.add(r21);
+
+	r22 = new THREE.Mesh(r3g,rcol);
+	r22.position.x = -fra*144.33*300/250;
+	r22.position.y = -fra*204.12*300/250;
+	scene.add(r22);
+
+	r23 = new THREE.Mesh(r3g,rcol);
+	r23.position.x = -fra*144.33*350/250;
+	r23.position.y = -fra*204.12*350/250;
+	scene.add(r23);
+
+	r24 = new THREE.Mesh(r3g,rcol);
+	r24.position.x = -fra*144.33*400/250;
+	r24.position.y = -fra*204.12*400/250;
+	scene.add(r24);
+
+	r25 = new THREE.Mesh(r3g,rcol);
+	r25.position.x = -fra*144.33;
+	r25.position.y = fra*204.12;
+	scene.add(r25);
+
+	r26 = new THREE.Mesh(r3g,rcol);
+	r26.position.x = -fra*144.33*300/250;
+	r26.position.y = fra*204.12*300/250;
+	scene.add(r26);
+
+	r27 = new THREE.Mesh(r3g,rcol);
+	r27.position.x = -fra*144.33*350/250;
+	r27.position.y = fra*204.12*350/250;
+	scene.add(r27);
+
+	r28 = new THREE.Mesh(r3g,rcol);
+	r28.position.x = -fra*144.33*400/250;
+	r28.position.y = fra*204.12*400/250;
+	scene.add(r28);
+
+	r29 = new THREE.Mesh(r1g,rcol);
+	r29.position.x = -fra*250;
+	scene.add(r29);
+
+	
+	r30 = new THREE.Mesh(r1g,rcol);
+	r30.position.x = -fra*300;
+	scene.add(r30);
+
+
+	r31 = new THREE.Mesh(r1g,rcol);
+	r31.position.x = -fra*350;
+	scene.add(r31);
+
+
+	r32 = new THREE.Mesh(r1g,rcol);
+	r32.position.x = -fra*400;
+	scene.add(r32);
+
+
+	r2g = new THREE.BoxGeometry(fra*10,fra*2,fra*2);
+
+	r33 = new THREE.Mesh(r2g,rcol);
+
+	r33.position.x = fra*83.333;
+	r33.position.y = fra*235.7;
+	rotateAroundObjectAxis(r33,new THREE.Vector3(0,0,1),-0.9533);
+
+	
+	scene.add(r33);
+
+	r34 = new THREE.Mesh(r2g,rcol);
+	
+	r34.position.x = fra*83.333*300/250;
+	r34.position.y = fra*235.7*300/250;
+	rotateAroundObjectAxis(r34,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r34);
+
+	r35 = new THREE.Mesh(r2g,rcol);
+	
+	r35.position.x = fra*83.333*350/250;
+	r35.position.y = fra*235.7*350/250;
+	rotateAroundObjectAxis(r35,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r35);
+
+	r36 = new THREE.Mesh(r2g,rcol);
+	
+	r36.position.x = fra*83.333*400/250;
+	r36.position.y = fra*235.7*400/250;
+	rotateAroundObjectAxis(r36,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r36);
+
+	r37 = new THREE.Mesh(r2g,rcol);
+
+	r37.position.x = -fra*83.333;
+	r37.position.y = fra*235.7;
+	rotateAroundObjectAxis(r37,new THREE.Vector3(0,0,1),0.9533);
+
+	
+	scene.add(r37);
+
+	r38 = new THREE.Mesh(r2g,rcol);
+	
+	r38.position.x = -fra*83.333*300/250;
+	r38.position.y = fra*235.7*300/250;
+	rotateAroundObjectAxis(r38,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r38);
+
+	r39 = new THREE.Mesh(r2g,rcol);
+	
+	r39.position.x = -fra*83.333*350/250;
+	r39.position.y = fra*235.7*350/250;
+	rotateAroundObjectAxis(r39,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r39);
+
+	r40 = new THREE.Mesh(r2g,rcol);
+	
+	r40.position.x = -fra*83.333*400/250;
+	r40.position.y = fra*235.7*400/250;
+	rotateAroundObjectAxis(r40,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r40);
+
+	r41 = new THREE.Mesh(r2g,rcol);
+
+	r41.position.x = -fra*83.333;
+	r41.position.y = -fra*235.7;
+	rotateAroundObjectAxis(r41,new THREE.Vector3(0,0,1),-0.9533);
+
+	
+	scene.add(r41);
+
+	r42 = new THREE.Mesh(r2g,rcol);
+	
+	r42.position.x = -fra*83.333*300/250;
+	r42.position.y = -fra*235.7*300/250;
+	rotateAroundObjectAxis(r42,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r42);
+
+	r43 = new THREE.Mesh(r2g,rcol);
+	
+	r43.position.x = -fra*83.333*350/250;
+	r43.position.y = -fra*235.7*350/250;
+	rotateAroundObjectAxis(r43,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r43);
+
+	r44 = new THREE.Mesh(r2g,rcol);
+	
+	r44.position.x = -fra*83.333*400/250;
+	r44.position.y = -fra*235.7*400/250;
+	rotateAroundObjectAxis(r44,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r44);
+
+	r45 = new THREE.Mesh(r2g,rcol);
+
+	r45.position.x = fra*83.333;
+	r45.position.y = -fra*235.7;
+	rotateAroundObjectAxis(r45,new THREE.Vector3(0,0,1),0.9533);
+
+	
+	scene.add(r45);
+
+	r46 = new THREE.Mesh(r2g,rcol);
+	
+	r46.position.x = fra*83.333*300/250;
+	r46.position.y = -fra*235.7*300/250;
+	rotateAroundObjectAxis(r46,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r46);
+
+	r47 = new THREE.Mesh(r2g,rcol);
+	
+	r47.position.x = fra*83.333*350/250;
+	r47.position.y = -fra*235.7*350/250;
+	rotateAroundObjectAxis(r47,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r47);
+
+	r48 = new THREE.Mesh(r2g,rcol);
+	
+	r48.position.x = fra*83.333*400/250;
+	r48.position.y = -fra*235.7*400/250;
+	rotateAroundObjectAxis(r48,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r48);
+
+
+
+	r49 = new THREE.Mesh(r2g,rcol);
+
+	r49.position.x = fra*204.12;
+	r49.position.y = fra*144.34;
+	rotateAroundObjectAxis(r49,new THREE.Vector3(0,0,1),0.9533);
+
+	
+	scene.add(r49);
+
+	r50 = new THREE.Mesh(r2g,rcol);
+	
+	r50.position.x = fra*204.12*300/250;
+	r50.position.y = fra*144.34*300/250;
+	rotateAroundObjectAxis(r50,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r50);
+
+	r51 = new THREE.Mesh(r2g,rcol);
+	
+	r51.position.x = fra*204.12*350/250;
+	r51.position.y = fra*144.34*350/250;
+	rotateAroundObjectAxis(r51,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r51);
+
+	r52 = new THREE.Mesh(r2g,rcol);
+	
+	r52.position.x = fra*204.12*400/250;
+	r52.position.y = fra*144.34*400/250;
+	rotateAroundObjectAxis(r52,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r52);
+
+
+	r53 = new THREE.Mesh(r2g,rcol);
+
+	r53.position.x = -fra*204.12;
+	r53.position.y = fra*144.34;
+	rotateAroundObjectAxis(r53,new THREE.Vector3(0,0,1),-0.9533);
+
+	
+	scene.add(r53);
+
+	r54 = new THREE.Mesh(r2g,rcol);
+	
+	r54.position.x = -fra*204.12*300/250;
+	r54.position.y = fra*144.34*300/250;
+	rotateAroundObjectAxis(r54,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r54);
+
+	r55 = new THREE.Mesh(r2g,rcol);
+	
+	r55.position.x = -fra*204.12*350/250;
+	r55.position.y = fra*144.34*350/250;
+	rotateAroundObjectAxis(r55,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r55);
+
+	r56 = new THREE.Mesh(r2g,rcol);
+	
+	r56.position.x = -fra*204.12*400/250;
+	r56.position.y = fra*144.34*400/250;
+	rotateAroundObjectAxis(r56,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r56);
+
+	r57 = new THREE.Mesh(r2g,rcol);
+
+	r57.position.x = -fra*204.12;
+	r57.position.y = -fra*144.34;
+	rotateAroundObjectAxis(r57,new THREE.Vector3(0,0,1),0.9533);
+
+	
+	scene.add(r57);
+
+	r58 = new THREE.Mesh(r2g,rcol);
+	
+	r58.position.x = -fra*204.12*300/250;
+	r58.position.y = -fra*144.34*300/250;
+	rotateAroundObjectAxis(r58,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r58);
+
+	r59 = new THREE.Mesh(r2g,rcol);
+	
+	r59.position.x = -fra*204.12*350/250;
+	r59.position.y = -fra*144.34*350/250;
+	rotateAroundObjectAxis(r59,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r59);
+
+	r60 = new THREE.Mesh(r2g,rcol);
+	
+	r60.position.x = -fra*204.12*400/250;
+	r60.position.y = -fra*144.34*400/250;
+	rotateAroundObjectAxis(r60,new THREE.Vector3(0,0,1),0.9533);
+	
+	scene.add(r60);
+
+
+	r61 = new THREE.Mesh(r2g,rcol);
+
+	r61.position.x = fra*204.12;
+	r61.position.y = -fra*144.34;
+	rotateAroundObjectAxis(r61,new THREE.Vector3(0,0,1),-0.9533);
+
+	
+	scene.add(r61);
+
+	r62 = new THREE.Mesh(r2g,rcol);
+	
+	r62.position.x = fra*204.12*300/250;
+	r62.position.y = -fra*144.34*300/250;
+	rotateAroundObjectAxis(r62,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r62);
+
+	r63 = new THREE.Mesh(r2g,rcol);
+	
+	r63.position.x = fra*204.12*350/250;
+	r63.position.y = -fra*144.34*350/250;
+	rotateAroundObjectAxis(r63,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r63);
+
+	r64 = new THREE.Mesh(r2g,rcol);
+	
+	r64.position.x = fra*204.12*400/250;
+	r64.position.y = -fra*144.34*400/250;
+	rotateAroundObjectAxis(r64,new THREE.Vector3(0,0,1),-0.9533);
+	
+	scene.add(r64);
+
+
+	r65 = new THREE.Mesh(r1g,rcol);
+	r65.position.x = fra*250;
+	rotateAroundWorldAxis(r65,new THREE.Vector3(0,1,0), Math.PI/6);
+	rotateAroundObjectAxis(r65,new THREE.Vector3(0,1,0), Math.PI/6);
+	scene.add(r65);
+
+	
+	r66 = new THREE.Mesh(r1g,rcol);
+	r66.position.x = fra*300;
+	rotateAroundWorldAxis(r66,new THREE.Vector3(0,1,0), Math.PI/6);
+	rotateAroundObjectAxis(r66,new THREE.Vector3(0,1,0), Math.PI/6);
+	scene.add(r66);
+
+
+	r67 = new THREE.Mesh(r1g,rcol);
+	r67.position.x = fra*350;
+	rotateAroundWorldAxis(r67,new THREE.Vector3(0,1,0), Math.PI/6);
+	rotateAroundObjectAxis(r67,new THREE.Vector3(0,1,0), Math.PI/6);
+	scene.add(r67);
+
+
+	r68 = new THREE.Mesh(r1g,rcol);
+	r68.position.x = fra*400;
+	rotateAroundWorldAxis(r68,new THREE.Vector3(0,1,0), Math.PI/6);
+	rotateAroundObjectAxis(r68,new THREE.Vector3(0,1,0), Math.PI/6);
+	scene.add(r68);
+
+	r69 = new THREE.Mesh(r1g,rcol);
+	r69.position.x = fra*250;
+	rotateAroundWorldAxis(r69,new THREE.Vector3(0,1,0), Math.PI/3);
+	rotateAroundObjectAxis(r69,new THREE.Vector3(0,1,0), Math.PI/3);
+	scene.add(r69);
+
+	
+	r70 = new THREE.Mesh(r1g,rcol);
+	r70.position.x = fra*300;
+	rotateAroundWorldAxis(r70,new THREE.Vector3(0,1,0), Math.PI/3);
+	rotateAroundObjectAxis(r70,new THREE.Vector3(0,1,0), Math.PI/3);
+	scene.add(r70);
+
+
+	r71 = new THREE.Mesh(r1g,rcol);
+	r71.position.x = fra*350;
+	rotateAroundWorldAxis(r71,new THREE.Vector3(0,1,0), Math.PI/3);
+	rotateAroundObjectAxis(r71,new THREE.Vector3(0,1,0), Math.PI/3);
+	scene.add(r71);
+
+
+	r72 = new THREE.Mesh(r1g,rcol);
+	r72.position.x = fra*400;
+	rotateAroundWorldAxis(r72,new THREE.Vector3(0,1,0), Math.PI/3);
+	rotateAroundObjectAxis(r72,new THREE.Vector3(0,1,0), Math.PI/3);
+	scene.add(r72);
+
+	
+	r73 = new THREE.Mesh(r1g,rcol);
+	r73.position.x = fra*250;
+	rotateAroundWorldAxis(r73,new THREE.Vector3(0,1,0), Math.PI/2);
+	rotateAroundObjectAxis(r73,new THREE.Vector3(0,1,0), Math.PI/2);
+	scene.add(r73);
+
+	
+	r74 = new THREE.Mesh(r1g,rcol);
+	r74.position.x = fra*300;
+	rotateAroundWorldAxis(r74,new THREE.Vector3(0,1,0), Math.PI/2);
+	rotateAroundObjectAxis(r74,new THREE.Vector3(0,1,0), Math.PI/2);
+	scene.add(r74);
+
+
+	r75 = new THREE.Mesh(r1g,rcol);
+	r75.position.x = fra*350;
+	rotateAroundWorldAxis(r75,new THREE.Vector3(0,1,0), Math.PI/2);
+	rotateAroundObjectAxis(r75,new THREE.Vector3(0,1,0), Math.PI/2);
+	scene.add(r75);
+
+
+	r76 = new THREE.Mesh(r1g,rcol);
+	r76.position.x = fra*400;
+	rotateAroundWorldAxis(r76,new THREE.Vector3(0,1,0), Math.PI/2);
+	rotateAroundObjectAxis(r76,new THREE.Vector3(0,1,0), Math.PI/2);
+	scene.add(r76);
+
+	r77 = new THREE.Mesh(r1g,rcol);
+	r77.position.x = fra*250;
+	rotateAroundWorldAxis(r77,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	rotateAroundObjectAxis(r77,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	scene.add(r77);
+
+	
+	r78 = new THREE.Mesh(r1g,rcol);
+	r78.position.x = fra*300;
+	rotateAroundWorldAxis(r78,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	rotateAroundObjectAxis(r78,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	scene.add(r78);
+
+
+	r79 = new THREE.Mesh(r1g,rcol);
+	r79.position.x = fra*350;
+	rotateAroundWorldAxis(r79,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	rotateAroundObjectAxis(r79,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	scene.add(r79);
+
+
+	r80 = new THREE.Mesh(r1g,rcol);
+	r80.position.x = fra*400;
+	rotateAroundWorldAxis(r80,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	rotateAroundObjectAxis(r80,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	scene.add(r80);
+
+	r81 = new THREE.Mesh(r1g,rcol);
+	r81.position.x = fra*250;
+	rotateAroundWorldAxis(r81,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	rotateAroundObjectAxis(r81,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	scene.add(r81);
+
+	
+	r82 = new THREE.Mesh(r1g,rcol);
+	r82.position.x = fra*300;
+	rotateAroundWorldAxis(r82,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	rotateAroundObjectAxis(r82,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	scene.add(r82);
+
+
+	r83 = new THREE.Mesh(r1g,rcol);
+	r83.position.x = fra*350;
+	rotateAroundWorldAxis(r83,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	rotateAroundObjectAxis(r83,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	scene.add(r83);
+
+
+	r84 = new THREE.Mesh(r1g,rcol);
+	r84.position.x = fra*400;
+	rotateAroundWorldAxis(r84,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	rotateAroundObjectAxis(r84,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	scene.add(r84);
+
+
+	r85 = new THREE.Mesh(r1g,rcol);
+	r85.position.x = -fra*250;
+	rotateAroundWorldAxis(r85,new THREE.Vector3(0,1,0), Math.PI/6);
+	rotateAroundObjectAxis(r85,new THREE.Vector3(0,1,0), Math.PI/6);
+	scene.add(r85);
+
+	
+	r86 = new THREE.Mesh(r1g,rcol);
+	r86.position.x = -fra*300;
+	rotateAroundWorldAxis(r86,new THREE.Vector3(0,1,0), Math.PI/6);
+	rotateAroundObjectAxis(r86,new THREE.Vector3(0,1,0), Math.PI/6);
+	scene.add(r86);
+
+
+	r87 = new THREE.Mesh(r1g,rcol);
+	r87.position.x = -fra*350;
+	rotateAroundWorldAxis(r87,new THREE.Vector3(0,1,0), Math.PI/6);
+	rotateAroundObjectAxis(r87,new THREE.Vector3(0,1,0), Math.PI/6);
+	scene.add(r87);
+
+
+	r88 = new THREE.Mesh(r1g,rcol);
+	r88.position.x = -fra*400;
+	rotateAroundWorldAxis(r88,new THREE.Vector3(0,1,0), Math.PI/6);
+	rotateAroundObjectAxis(r88,new THREE.Vector3(0,1,0), Math.PI/6);
+	scene.add(r88);
+
+	r89 = new THREE.Mesh(r1g,rcol);
+	r89.position.x = -fra*250;
+	rotateAroundWorldAxis(r89,new THREE.Vector3(0,1,0), Math.PI/3);
+	rotateAroundObjectAxis(r89,new THREE.Vector3(0,1,0), Math.PI/3);
+	scene.add(r89);
+
+	
+	r90 = new THREE.Mesh(r1g,rcol);
+	r90.position.x = -fra*300;
+	rotateAroundWorldAxis(r90,new THREE.Vector3(0,1,0), Math.PI/3);
+	rotateAroundObjectAxis(r90,new THREE.Vector3(0,1,0), Math.PI/3);
+	scene.add(r90);
+
+
+	r91 = new THREE.Mesh(r1g,rcol);
+	r91.position.x = -fra*350;
+	rotateAroundWorldAxis(r91,new THREE.Vector3(0,1,0), Math.PI/3);
+	rotateAroundObjectAxis(r91,new THREE.Vector3(0,1,0), Math.PI/3);
+	scene.add(r91);
+
+
+	r92 = new THREE.Mesh(r1g,rcol);
+	r92.position.x = -fra*400;
+	rotateAroundWorldAxis(r92,new THREE.Vector3(0,1,0), Math.PI/3);
+	rotateAroundObjectAxis(r92,new THREE.Vector3(0,1,0), Math.PI/3);
+	scene.add(r92);
+
+	
+	r93 = new THREE.Mesh(r1g,rcol);
+	r93.position.x = -fra*250;
+	rotateAroundWorldAxis(r93,new THREE.Vector3(0,1,0), Math.PI/2);
+	rotateAroundObjectAxis(r93,new THREE.Vector3(0,1,0), Math.PI/2);
+	scene.add(r93);
+
+	
+	r94 = new THREE.Mesh(r1g,rcol);
+	r94.position.x = -fra*300;
+	rotateAroundWorldAxis(r94,new THREE.Vector3(0,1,0), Math.PI/2);
+	rotateAroundObjectAxis(r94,new THREE.Vector3(0,1,0), Math.PI/2);
+	scene.add(r94);
+
+
+	r95 = new THREE.Mesh(r1g,rcol);
+	r95.position.x = -fra*350;
+	rotateAroundWorldAxis(r95,new THREE.Vector3(0,1,0), Math.PI/2);
+	rotateAroundObjectAxis(r95,new THREE.Vector3(0,1,0), Math.PI/2);
+	scene.add(r95);
+
+
+	r96 = new THREE.Mesh(r1g,rcol);
+	r96.position.x = -fra*400;
+	rotateAroundWorldAxis(r96,new THREE.Vector3(0,1,0), Math.PI/2);
+	rotateAroundObjectAxis(r96,new THREE.Vector3(0,1,0), Math.PI/2);
+	scene.add(r96);
+
+	r97 = new THREE.Mesh(r1g,rcol);
+	r97.position.x = -fra*250;
+	rotateAroundWorldAxis(r97,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	rotateAroundObjectAxis(r97,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	scene.add(r97);
+
+	
+	r98 = new THREE.Mesh(r1g,rcol);
+	r98.position.x = -fra*300;
+	rotateAroundWorldAxis(r98,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	rotateAroundObjectAxis(r98,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	scene.add(r98);
+
+
+	r99 = new THREE.Mesh(r1g,rcol);
+	r99.position.x = -fra*350;
+	rotateAroundWorldAxis(r99,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	rotateAroundObjectAxis(r99,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	scene.add(r99);
+
+
+	r100 = new THREE.Mesh(r1g,rcol);
+	r100.position.x = -fra*400;
+	rotateAroundWorldAxis(r100,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	rotateAroundObjectAxis(r100,new THREE.Vector3(0,1,0), 2*Math.PI/3);
+	scene.add(r100);
+
+	r101 = new THREE.Mesh(r1g,rcol);
+	r101.position.x = -fra*250;
+	rotateAroundWorldAxis(r101,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	rotateAroundObjectAxis(r101,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	scene.add(r101);
+
+	
+	r102 = new THREE.Mesh(r1g,rcol);
+	r102.position.x = -fra*300;
+	rotateAroundWorldAxis(r102,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	rotateAroundObjectAxis(r102,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	scene.add(r102);
+
+
+	r103 = new THREE.Mesh(r1g,rcol);
+	r103.position.x = -fra*350;
+	rotateAroundWorldAxis(r103,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	rotateAroundObjectAxis(r103,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	scene.add(r103);
+
+
+	r104 = new THREE.Mesh(r1g,rcol);
+	r104.position.x = -fra*400;
+	rotateAroundWorldAxis(r104,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	rotateAroundObjectAxis(r104,new THREE.Vector3(0,1,0), 5*Math.PI/6);
+	scene.add(r104);
+
+
+
+
+	r105 = new THREE.Mesh(r3g,rcol);
+	r105.position.x = fra*144.33;
+	r105.position.y = fra*204.12;
+	rotateAroundWorldAxis(r105,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r105,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r105);
+
+	r106 = new THREE.Mesh(r3g,rcol);
+	r106.position.x = fra*144.33*300/250;
+	r106.position.y = fra*204.12*300/250;
+	rotateAroundWorldAxis(r106,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r106,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r106);
+
+	r107 = new THREE.Mesh(r3g,rcol);
+	r107.position.x = fra*144.33*350/250;
+	r107.position.y = fra*204.12*350/250;
+	rotateAroundWorldAxis(r107,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r107,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r107);
+
+	r108 = new THREE.Mesh(r3g,rcol);
+	r108.position.x = fra*144.33*400/250;
+	r108.position.y = fra*204.12*400/250;
+	rotateAroundWorldAxis(r108,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r108,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r108);
+
+	r109 = new THREE.Mesh(r3g,rcol);
+	r109.position.x = -fra*144.33;
+	r109.position.y = fra*204.12;
+	rotateAroundWorldAxis(r109,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r109,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r109);
+
+	r110 = new THREE.Mesh(r3g,rcol);
+	r110.position.x = -fra*144.33*300/250;
+	r110.position.y = fra*204.12*300/250;
+	rotateAroundWorldAxis(r110,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r110,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r110);
+
+	r111 = new THREE.Mesh(r3g,rcol);
+	r111.position.x = -fra*144.33*350/250;
+	r111.position.y = fra*204.12*350/250;
+	rotateAroundWorldAxis(r111,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r111,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r111);
+
+	r112 = new THREE.Mesh(r3g,rcol);
+	r112.position.x = -fra*144.33*400/250;
+	r112.position.y = fra*204.12*400/250;
+	rotateAroundWorldAxis(r112,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r112,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r112);
+
+	r113 = new THREE.Mesh(r3g,rcol);
+	r113.position.x = -fra*144.33;
+	r113.position.y = -fra*204.12;
+	rotateAroundWorldAxis(r113,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r113,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r113);
+
+	r114 = new THREE.Mesh(r3g,rcol);
+	r114.position.x = -fra*144.33*300/250;
+	r114.position.y = -fra*204.12*300/250;
+	rotateAroundWorldAxis(r114,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r114,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r114);
+
+	r115 = new THREE.Mesh(r3g,rcol);
+	r115.position.x = -fra*144.33*350/250;
+	r115.position.y = -fra*204.12*350/250;
+	rotateAroundWorldAxis(r115,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r115,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r115);
+
+	r116 = new THREE.Mesh(r3g,rcol);
+	r116.position.x = -fra*144.33*400/250;
+	r116.position.y = -fra*204.12*400/250;
+	rotateAroundWorldAxis(r116,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r116,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r116);
+
+	r117 = new THREE.Mesh(r3g,rcol);
+	r117.position.x = fra*144.33;
+	r117.position.y = -fra*204.12;
+	rotateAroundWorldAxis(r117,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r117,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r117);
+
+	r118 = new THREE.Mesh(r3g,rcol);
+	r118.position.x = fra*144.33*300/250;
+	r118.position.y = -fra*204.12*300/250;
+	rotateAroundWorldAxis(r118,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r118,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r118);
+
+	r119 = new THREE.Mesh(r3g,rcol);
+	r119.position.x = fra*144.33*350/250;
+	r119.position.y = -fra*204.12*350/250;
+	rotateAroundWorldAxis(r119,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r119,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r119);
+
+	r120 = new THREE.Mesh(r3g,rcol);
+	r120.position.x = fra*144.33*400/250;
+	r120.position.y = -fra*204.12*400/250;
+	rotateAroundWorldAxis(r120,new THREE.Vector3(0,1,0),Math.PI/2);
+	rotateAroundObjectAxis(r120,new THREE.Vector3(0,1,0),Math.PI/2);
+	scene.add(r120);
+
+
+	
+
+	
+	
+
+
+
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+	
+        document.body.appendChild( renderer.domElement );
+
+    }
+
+
+    function animate() {
+	
+        requestAnimationFrame( animate );
+
+        mesh.rotation.y += fra2*w0;
+	mesh2.rotation.y += fra2*w0;
+	
+
+	r1.rotation.y += -0.512*w0; 
+	r2.rotation.y += -0.296*w0;
+	r3.rotation.y += -0.186*w0;
+	r4.rotation.y += -0.125*w0;
+
+
+	r5.rotation.y += 0.5*0.512*w0;
+	r6.rotation.y += 0.5*0.296*w0;
+	r7.rotation.y += 0.5*0.186*w0;
+	r8.rotation.y += 0.5*0.125*w0;
+
+	r9.rotation.y += 0.5*0.512*w0;
+	r10.rotation.y += 0.5*0.296*w0;
+	r11.rotation.y += 0.5*0.186*w0;
+	r12.rotation.y += 0.5*0.125*w0;
+
+	r13.rotation.x += 0.707*0.512*w0;
+	r14.rotation.x += 0.707*0.296*w0;
+	r15.rotation.x += 0.707*0.186*w0;
+	r16.rotation.x += 0.707*0.125*w0;
+	
+	r17.rotation.x += -0.707*0.512*w0;
+	r18.rotation.x += -0.707*0.296*w0;
+	r19.rotation.x += -0.707*0.186*w0;
+	r20.rotation.x += -0.707*0.125*w0;
+
+
+	r21.rotation.x += 0.707*0.512*w0;
+	r22.rotation.x += 0.707*0.296*w0;
+	r23.rotation.x += 0.707*0.186*w0;
+	r24.rotation.x += 0.707*0.125*w0;
+
+	r25.rotation.x += -0.707*0.512*w0;
+	r26.rotation.x += -0.707*0.296*w0;
+	r27.rotation.x += -0.707*0.186*w0;
+	r28.rotation.x += -0.707*0.125*w0;
+
+	r29.rotation.y += -0.512*w0; 
+	r30.rotation.y += -0.296*w0;
+	r31.rotation.y += -0.186*w0;
+	r32.rotation.y += -0.125*w0;
+
+	rotateAroundObjectAxis(r33,new THREE.Vector3(0,1,0),0.577*0.512*w0);
+	rotateAroundObjectAxis(r34,new THREE.Vector3(0,1,0),0.577*0.296*w0);
+	rotateAroundObjectAxis(r35,new THREE.Vector3(0,1,0),0.577*0.186*w0);
+	rotateAroundObjectAxis(r36,new THREE.Vector3(0,1,0),0.577*0.125*w0);
+
+	
+	
+
+	rotateAroundObjectAxis(r37,new THREE.Vector3(0,1,0),0.577*0.512*w0);
+	rotateAroundObjectAxis(r38,new THREE.Vector3(0,1,0),0.577*0.296*w0);
+	rotateAroundObjectAxis(r39,new THREE.Vector3(0,1,0),0.577*0.186*w0);
+	rotateAroundObjectAxis(r40,new THREE.Vector3(0,1,0),0.577*0.125*w0);
+	
+
+	rotateAroundObjectAxis(r41,new THREE.Vector3(0,1,0),0.577*0.512*w0);
+	rotateAroundObjectAxis(r42,new THREE.Vector3(0,1,0),0.577*0.296*w0);
+	rotateAroundObjectAxis(r43,new THREE.Vector3(0,1,0),0.577*0.186*w0);
+	rotateAroundObjectAxis(r44,new THREE.Vector3(0,1,0),0.577*0.125*w0);
+	
+	rotateAroundObjectAxis(r45,new THREE.Vector3(0,1,0),0.577*0.512*w0);
+	rotateAroundObjectAxis(r46,new THREE.Vector3(0,1,0),0.577*0.296*w0);
+	rotateAroundObjectAxis(r47,new THREE.Vector3(0,1,0),0.577*0.186*w0);
+	rotateAroundObjectAxis(r48,new THREE.Vector3(0,1,0),0.577*0.125*w0);
+
+
+	rotateAroundObjectAxis(r49,new THREE.Vector3(0,1,0),-0.577*0.512*w0);
+	rotateAroundObjectAxis(r50,new THREE.Vector3(0,1,0),-0.577*0.296*w0);
+	rotateAroundObjectAxis(r51,new THREE.Vector3(0,1,0),-0.577*0.186*w0);
+	rotateAroundObjectAxis(r52,new THREE.Vector3(0,1,0),-0.577*0.125*w0);
+
+	rotateAroundObjectAxis(r53,new THREE.Vector3(0,1,0),-0.577*0.512*w0);
+	rotateAroundObjectAxis(r54,new THREE.Vector3(0,1,0),-0.577*0.296*w0);
+	rotateAroundObjectAxis(r55,new THREE.Vector3(0,1,0),-0.577*0.186*w0);
+	rotateAroundObjectAxis(r56,new THREE.Vector3(0,1,0),-0.577*0.125*w0);
+
+	rotateAroundObjectAxis(r57,new THREE.Vector3(0,1,0),-0.577*0.512*w0);
+	rotateAroundObjectAxis(r58,new THREE.Vector3(0,1,0),-0.577*0.296*w0);
+	rotateAroundObjectAxis(r59,new THREE.Vector3(0,1,0),-0.577*0.186*w0);
+	rotateAroundObjectAxis(r60,new THREE.Vector3(0,1,0),-0.577*0.125*w0);
+
+	rotateAroundObjectAxis(r61,new THREE.Vector3(0,1,0),-0.577*0.512*w0);
+	rotateAroundObjectAxis(r62,new THREE.Vector3(0,1,0),-0.577*0.296*w0);
+	rotateAroundObjectAxis(r63,new THREE.Vector3(0,1,0),-0.577*0.186*w0);
+	rotateAroundObjectAxis(r64,new THREE.Vector3(0,1,0),-0.577*0.125*w0);
+
+	r65.rotation.y += -0.512*w0; 
+	r66.rotation.y += -0.296*w0;
+	r67.rotation.y += -0.186*w0;
+	r68.rotation.y += -0.125*w0;
+
+	r69.rotation.y += -0.512*w0; 
+	r70.rotation.y += -0.296*w0;
+	r71.rotation.y += -0.186*w0;
+	r72.rotation.y += -0.125*w0;
+
+	r73.rotation.y += -0.512*w0; 
+	r74.rotation.y += -0.296*w0;
+	r75.rotation.y += -0.186*w0;
+	r76.rotation.y += -0.125*w0;
+
+	r77.rotation.y += 0.512*w0; 
+	r78.rotation.y += 0.296*w0;
+	r79.rotation.y += 0.186*w0;
+	r80.rotation.y += 0.125*w0;
+
+	r81.rotation.y += 0.512*w0; 
+	r82.rotation.y += 0.296*w0;
+	r83.rotation.y += 0.186*w0;
+	r84.rotation.y += 0.125*w0;
+
+	r85.rotation.y += -0.512*w0; 
+	r86.rotation.y += -0.296*w0;
+	r87.rotation.y += -0.186*w0;
+	r88.rotation.y += -0.125*w0;
+
+	r89.rotation.y += -0.512*w0; 
+	r90.rotation.y += -0.296*w0;
+	r91.rotation.y += -0.186*w0;
+	r92.rotation.y += -0.125*w0;
+
+	r93.rotation.y += -0.512*w0; 
+	r94.rotation.y += -0.296*w0;
+	r95.rotation.y += -0.186*w0;
+	r96.rotation.y += -0.125*w0;
+
+	r97.rotation.y += 0.512*w0; 
+	r98.rotation.y += 0.296*w0;
+	r99.rotation.y += 0.186*w0;
+	r100.rotation.y += 0.125*w0;
+
+	r101.rotation.y += 0.512*w0; 
+	r102.rotation.y += 0.296*w0;
+	r103.rotation.y += 0.186*w0;
+	r104.rotation.y += 0.125*w0; <!-- end equatorial azimuthal symmetry -->
+
+
+	rotateAroundObjectAxis(r105,new THREE.Vector3(1,0,0),0.707*0.512*w0);
+	rotateAroundObjectAxis(r106,new THREE.Vector3(1,0,0),0.707*0.296*w0);
+	rotateAroundObjectAxis(r107,new THREE.Vector3(1,0,0),0.707*0.186*w0);
+	rotateAroundObjectAxis(r108,new THREE.Vector3(1,0,0),0.707*0.125*w0);
+
+	rotateAroundObjectAxis(r109,new THREE.Vector3(1,0,0),-0.707*0.512*w0);
+	rotateAroundObjectAxis(r110,new THREE.Vector3(1,0,0),-0.707*0.296*w0);
+	rotateAroundObjectAxis(r111,new THREE.Vector3(1,0,0),-0.707*0.186*w0);
+	rotateAroundObjectAxis(r112,new THREE.Vector3(1,0,0),-0.707*0.125*w0);
+
+	rotateAroundObjectAxis(r113,new THREE.Vector3(1,0,0),0.707*0.512*w0);
+	rotateAroundObjectAxis(r114,new THREE.Vector3(1,0,0),0.707*0.296*w0);
+	rotateAroundObjectAxis(r115,new THREE.Vector3(1,0,0),0.707*0.186*w0);
+	rotateAroundObjectAxis(r116,new THREE.Vector3(1,0,0),0.707*0.125*w0);
+
+	rotateAroundObjectAxis(r117,new THREE.Vector3(1,0,0),-0.707*0.512*w0);
+	rotateAroundObjectAxis(r118,new THREE.Vector3(1,0,0),-0.707*0.296*w0);
+	rotateAroundObjectAxis(r119,new THREE.Vector3(1,0,0),-0.707*0.186*w0);
+	rotateAroundObjectAxis(r120,new THREE.Vector3(1,0,0),-0.707*0.125*w0);
+
+
+
+
+
+        renderer.render( scene, camera );
+
+    }
+
+   function render() {
+     renderer.render( scene, camera );
+    }
+
+
+function rotateAroundObjectAxis(object, axis, radians) {
+    		rm1 = new THREE.Matrix4();
+    		rm1.makeRotationAxis(axis.normalize(), radians);
+   		object.matrix.multiply(rm1);      // post-multiply
+    		object.rotation.setFromRotationMatrix(object.matrix);
+
+}
+
+function rotateAroundWorldAxis(object, axis, angle) {
+  var rotationMatrix = new THREE.Matrix4();
+  rotationMatrix.makeRotationAxis( axis.normalize(), angle );
+  var currentPos = new THREE.Vector4(object.position.x, object.position.y, object.position.z, 1);
+  var newPos = currentPos.applyMatrix4(rotationMatrix);
+  object.position.x = newPos.x;
+  object.position.y = newPos.y;
+  object.position.z = newPos.z;
+}
+
+
+
+
+</script>
+</div>
+
+</body>
+
+</html>
