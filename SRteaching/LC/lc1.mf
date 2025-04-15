@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: lib/jfreechart-1.0.19.jar lib/jcommon-1.0.23.jar relativity1
-Main-Class: relativity1/lc1
