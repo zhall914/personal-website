@@ -12,9 +12,10 @@
   
     <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
 <script>
-      cheerpjInit(() =>
+      cheerpjInit(async () =>
       {
-        cheerpjRunMain("/app/srlesson/SANDBOX/SANDBOX.jar", "relativity3.sandbox");
+      await cheerpjAdJr("SANDBOX.jar");
+     cheerpjRunMain("relativity3.sandbox");
         });
     </script>
 
