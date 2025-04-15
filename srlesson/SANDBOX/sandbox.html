@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Run Java Applet with CheerpJ</title>
+    <script src="https://cheerpj.app/2.3/loader.js"></script>
+</head>
+<body onload="CheerpJInit()">
+
+    <h2>Running Java Applet via CheerpJ</h2>
+
+    <!-- This is the magic part -->
+    <cheerpj-applet 
+        archive="SANDBOX.jar" 
+        code="relativity3.sandbox" 
+        width="800" 
+        height="600">
+    </cheerpj-applet>
+
+</body>
+</html>
