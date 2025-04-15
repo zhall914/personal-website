@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Run Java Applet with CheerpJ</title>
-    
-</head>
-<body>
-
-    <h2>Running Java Applet via CheerpJ</h2>
-    
-  
+  <head>
+    <meta charset="UTF-8" />
+    <title>CheerpJ Test</title>
     <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
-<script>
-     window.onload = () => cheerpjInit(async () =>
-      {
-      await cheerpjAddJar("SANDBOX.zip");
-     cheerpjRunMain("relativity3.sandbox");
-        });
-    </script>
+  </head>
+  <body>
+    <h1>Running Java with CheerpJ</h1>
 
-</body>
+    <script>
+      window.onload = () => {
+        console.log("Initializing CheerpJ...");
+
+        cheerpjInit(async () => {
+          console.log("CheerpJ initialized");
+
+          try {
+            await cheerpjAddJar("SANDBOX.zip");
+            console.log("JAR added");
+            cheerpjRunMain("relativity3.sandbox");
+          } catch (e) {
+            console.error("CheerpJ Error:", e);
+          }
+        });
+      };
+    </script>
+  </body>
 </html>
