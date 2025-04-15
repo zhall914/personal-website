@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Class-Path: lib/jfreechart-1.0.19.jar lib/jcommon-1.0.23.jar /home/zjh/start relativity3
+Class-Path: l relativity3
 Main-Class: relativity3/sandbox
