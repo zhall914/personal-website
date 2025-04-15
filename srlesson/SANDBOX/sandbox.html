@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Run Java Applet with CheerpJ</title>
-    <script src="https://cjrtnc.leaningtech.com/2.3/loader.js"></script>
+    <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
 </head>
 <body onload="CheerpJInit()">
 
     <h2>Running Java Applet via CheerpJ</h2>
 
     <!-- This is the magic part -->
-    <cheerpj-applet 
+    <applet 
         archive="SANDBOX.jar" 
         code="relativity3.sandbox" 
         width="800" 
         height="600">
-    </cheerpj-applet>
-
+    </applet>
+<script>
+      cheerpjInit();
+    </script>
 </body>
 </html>
