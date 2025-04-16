@@ -571,7 +571,10 @@ public class sandbox {
 
 
 	
-		
+		sc.insets = Insets(10,0,10,0);
+		sc1.insets = Insets(10,0,10,0);
+		sc2.insets = Insets(10,0,10,0);
+
 		holdcheck.add(stgrid,sc);
 		holdcheck.add(hyp,sc1);
 		holdcheck.add(pulses,sc2);
