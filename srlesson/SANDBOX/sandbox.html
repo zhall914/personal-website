@@ -7,12 +7,19 @@
   </head>
   <body>
     <h1 style="text-align: center;">The "Relativistic Sandbox"</h1>
+    
+    <h3  style="font-weight: normal;">
+    <span style = "display: flex; align-items: center; justify-content: center; gap: 10px; width: fit-content; margin: 0 auto;"> Developed by <a href ="https://zhall914.github.io/personal-website" target="_blank">Zachary Hall<a> </span>
+    <span style = "display: flex; align-items: center; justify-content: center; gap: 1px; width: fit-content; margin: 0 auto; font-size: 0.9em; color: gray;"> Web-embedding powered by <img src="CheerpJ_16x9_Trans.png" style="height: 60px; width: auto; object-fit: contain;"> </span>
+    
+    </h3>
+
 <div id="applet-container" style="display: flex; justify-content: center; align-items: center; margin-top: 2rem;"></div>
 
    <script>
       (async function () {
         await cheerpjInit();
-        const display = cheerpjCreateDisplay(1000, 1000);
+        const display = cheerpjCreateDisplay(900, 900);
         document.getElementById('applet-container').appendChild(display);
         await cheerpjRunJar("/app/personal-website/srlesson/SANDBOX/SANDBOX.jar");
       })();
