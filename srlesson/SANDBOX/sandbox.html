@@ -3,15 +3,44 @@
   <head>
     <meta charset="utf-8" />
     <title>Relativistic Sandbox</title>
- <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
+    <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        font-family: sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      #sandbox-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+      }
+    </style>
   </head>
   <body>
     <h1>The "Relativistic Sandbox"</h1>
 
-   <script>
+    <div id="sandbox-container"></div>
+
+    <script>
       (async function () {
         await cheerpjInit();
-        cheerpjCreateDisplay(2100, 2100);
+        // Render the applet inside the container div
+        cheerpjCreateDisplay(1000, 1000).then(display => {
+          document.getElementById("sandbox-container").appendChild(display);
+        });
         await cheerpjRunJar("/app/personal-website/srlesson/SANDBOX/SANDBOX.jar");
       })();
     </script>
