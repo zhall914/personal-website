@@ -3,20 +3,47 @@
   <head>
     <meta charset="utf-8" />
     <title>Relativistic Sandbox</title>
- <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
+    <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
+    <style>
+      /* Style for the main text */
+      .main-text {
+        font-family: 'Palatino', serif; /* Palatino font */
+        font-size: 1.2em;
+        text-align: center;
+        margin-left: 10px;  /* Half the size of the applet's margin */
+        margin-right: 10px; /* Half the size of the applet's margin */
+        margin-top: 2rem;   /* Adds more space between the applet and the text */
+      }
+      
+      /* Optional: Style for the container of the applet and the text */
+      #applet-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem; /* Applet margin */
+      }
+    </style>
   </head>
   <body>
     <h1 style="text-align: center;">The "Relativistic Sandbox"</h1>
     
-    <h3  style="font-weight: normal;">
-    <span style = "display: flex; align-items: center; justify-content: center; gap: 10px; width: fit-content; margin: 0 auto;"> Developed by <a href ="https://zhall914.github.io/personal-website" target="_blank">Zachary Hall<a> </span>
-    <span style = "display: flex; align-items: center; justify-content: center; gap: 1px; width: fit-content; margin: 0 auto; font-size: 0.9em; color: gray;"> Web-embedding powered by <img src="CheerpJ_16x9_Trans.png" style="height: 60px; width: auto; object-fit: contain;"> </span>
-    
+    <h3 style="font-weight: normal;">
+      <span style="display: flex; align-items: center; justify-content: center; gap: 10px; width: fit-content; margin: 0 auto;">
+        Developed by <a href="https://zhall914.github.io/personal-website" target="_blank">Zachary Hall</a>
+      </span>
+      <span style="display: flex; align-items: center; justify-content: center; gap: 1px; width: fit-content; margin: 0 auto; font-size: 0.9em; color: gray;">
+        Web-embedding powered by <img src="CheerpJ_16x9_Trans.png" style="height: 60px; width: auto; object-fit: contain;">
+      </span>
     </h3>
 
-<div id="applet-container" style="display: flex; justify-content: center; align-items: center; margin-top: 2rem;"></div>
+    <div id="applet-container"></div>
 
-   <script>
+    <!-- Main text below the applet -->
+    <div class="main-text">
+      This is the main text centered below the applet. The margins are set to half the size of the applet's effective margins, and the font is Palatino.
+    </div>
+
+    <script>
       (async function () {
         await cheerpjInit();
         const display = cheerpjCreateDisplay(900, 900);
