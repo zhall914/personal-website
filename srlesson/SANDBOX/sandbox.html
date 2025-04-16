@@ -4,31 +4,16 @@
     <meta charset="utf-8" />
     <title>Relativistic Sandbox</title>
  <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
-    <style>
-      #appletContainer {
-        width: 900px;
-        height: 900px;
-        border: 1px solid #ccc;
-      }
-    </style>
   </head>
   <body>
     <h1>The "Relativistic Sandbox"</h1>
 
-    <div id="appletContainer"></div>
-
-    <script>
-      window.onload = function () {
-        cheerpjInit().then(() => {
-          // Replace with the correct path to your JAR file
-          cheerpjCreateApplet({
-            archive: "SANDBOX.jar",
-            code: "relativity3.sandbox",
-            width: 900,
-            height: 900,
-          }, document.getElementById("appletContainer"));
-        });
-      };
+   <script>
+      (async function () {
+        await cheerpjInit();
+        cheerpjCreateDisplay(800, 600);
+        await cheerpjRunJar("SANDBOX.jar");
+      })();
     </script>
   </body>
 </html>
