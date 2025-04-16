@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <title>CheerpJ Test</title>
+    <meta charset="utf-8" />
+    <title>Relativistic Sandbox</title>
     <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
     <script>
-  window.cheerpjConfig = {
-    licenseUrl: "https://cjrtnc.leaningtech.com/3.1/license.json"
-  };
-</script>
+
   </head>
   <body>
-    <h1>Running Java with CheerpJ</h1>
+    <h1>The "Relativistic Sandbox"</h1>
 
+   <applet
+   	archive="SANDBOX.jar"
+   	code="relativity3.sandbox"
+   	width="900"
+   	height="900"
+   	></applet>
     <script>
-      window.onload = () => {
-        console.log("Initializing CheerpJ...");
-
-        cheerpjInit(async () => {
-          console.log("CheerpJ initialized");
-
-          try {
-            await cheerpjAddJar("SANDBOX.jar");
-            console.log("JAR added");
-            cheerpjRunMain("relativity3.sandbox");
-          } catch (e) {
-            console.error("CheerpJ Error:", e);
-          }
-        });
-      };
+    cheerpJInit();
     </script>
   </body>
 </html>
