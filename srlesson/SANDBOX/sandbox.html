@@ -3,22 +3,32 @@
   <head>
     <meta charset="utf-8" />
     <title>Relativistic Sandbox</title>
-    <script src="https://cjrtnc.leaningtech.com/3.1/cj3loader.js"></script>
-    
+  <script src="https://cjrtnc.leaningtech.com/3.1/loader.min.js"></script>
+    <style>
+      #appletContainer {
+        width: 900px;
+        height: 900px;
+        border: 1px solid #ccc;
+      }
+    </style>
   </head>
   <body>
     <h1>The "Relativistic Sandbox"</h1>
 
-   <applet
-   	archive="SANDBOX.jar"
-   	code="relativity3.sandbox"
-   	width="900"
-   	height="900"
-   	></applet>
+    <div id="appletContainer"></div>
+
     <script>
-    window.addEventListener("load", function () {
-    cheerpJInit();
-  });
+      window.onload = function () {
+        cheerpjInit().then(() => {
+          // Replace with the correct path to your JAR file
+          cheerpjCreateApplet({
+            archive: "SANDBOX.jar",
+            code: "relativity3.sandbox",
+            width: 900,
+            height: 900,
+          }, document.getElementById("appletContainer"));
+        });
+      };
     </script>
   </body>
 </html>
