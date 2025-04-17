@@ -242,6 +242,7 @@ public class sandbox {
 		tpvals = new XYSeries("tpvals");
 			
 		JFrame f = new JFrame("Relativistic Sandbox");
+		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		initializeConstants1(0); // initialize v = 0.5, L = 1.3, tr = 5, halfwidth as 1.5*tr-ts, time as emitting time, S as proper frame
