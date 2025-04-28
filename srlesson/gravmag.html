@@ -45,6 +45,18 @@ container.addEventListener("mousewheel",render);
 	
 	controls = new THREE.OrbitControls( camera,container );
         controls.addEventListener( 'change', render );
+		// Mouse settings
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.screenSpacePanning = false;
+controls.enableZoom = true;
+controls.enablePan = true;
+
+// Touch settings
+controls.touches = {
+    ONE: THREE.TOUCH.ROTATE,
+    TWO: THREE.TOUCH.DOLLY_PAN
+};
 
 
 	var axis = new THREE.Vector3(0,0.4714,0.3333);
