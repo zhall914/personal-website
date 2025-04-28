@@ -30,7 +30,9 @@
 
 var container = document.getElementById( 'anim' );
 
-container.addEventListener("mousewheel",render, {passive: false});
+container.addEventListener('wheel', render, {passive: false});
+container.addEventListener('mousewheel', render, {passive:false}); // old fallback
+container.addEventListener('touchmove', render, {passive: false}); // for mobile
     function init() {
 
 
