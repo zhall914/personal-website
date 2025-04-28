@@ -30,7 +30,7 @@
 
 var container = document.getElementById( 'anim' );
 
-container.addEventListener("mousewheel",render);
+container.addEventListener("mousewheel",render, {passive: false});
     function init() {
 
 
@@ -47,10 +47,13 @@ container.addEventListener("mousewheel",render);
         controls.addEventListener( 'change', render );
 		// Mouse settings
 controls.enableDamping = true;
-controls.dampingFactor = 0.05;
 controls.screenSpacePanning = false;
 controls.enableZoom = true;
 controls.enablePan = true;
+controls.dampingFactor = 0.15;    // make it a little stronger (default was 0.05)
+controls.zoomSpeed = 0.8;         // slow down pinch zoom slightly
+controls.rotateSpeed = 0.6;       // slow down rotation slightly
+controls.panSpeed = 0.8;  
 
 // Touch settings
 controls.touches = {
