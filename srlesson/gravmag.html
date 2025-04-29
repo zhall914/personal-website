@@ -18,12 +18,12 @@
 		.main-text {
 		  font-family: 'Palatino', serif; /* Palatino font */
 		  font-size: 1.2em;
-		  text-align: center;
-		  justify-content: center;
+		  text-align: left;
+		  
         align-items: center;
-		width: 80%;
-		  margin-left: 10%;  /* Half the size of the applet*/
-		  margin-right: 10%; /* Half the size of the applet*/
+		width: 60%;
+		  margin-left: 20%;  /* Half the size of the applet*/
+		  margin-right: 20%; /* Half the size of the applet*/
 		  margin-top: 2rem;   /* Adds more space between the applet and the text */
 		}
 		
@@ -36,7 +36,7 @@
 		margin-top: 2rem; /* Applet margin */
 		}
 	  </style>
-<center>Written by <a href="https://zhall914.github.io/personal-website" target="_blank"> Zachary Hall</a></center>
+<center>Developed by <a href="https://zhall914.github.io/personal-website" target="_blank"> Zachary Hall</a></center>
 </head>
 <body>
 
@@ -47,7 +47,14 @@
 <div id = "anim" ></div>
 
 <div class="main-text"> 
-	<p>	This is an animation of the frame-dragging effect.</p>
+	<p>	This is an animation of the frame-dragging effect, as computed by a valid near-field, low-velocity approximation of the full theory of General Relativity made in 
+		<a target="_blank" href="https://zhall914.github.io/personal-website/srlesson/Hall_Stachel_NewtonCartanGravitomagnetic.pdf">this paper</a>, 
+		which I wrote as an undergraduate under the guidance of Professor John Stachel.
+		What is shown is the rotation that ideal rods would undergo for a uniform sphere of the mass and radius of Earth rotating at the rate at which Earth does rotate according to the results of that paper. 
+		The relative rotation rate of Earth to the rods shown is sped up by a rate of about 3 million as compared with the solution found. As can be seen by Fig. 13 in the paper, the vector field characterizing the magnitude and direction of the rotation of these ideal rods resembles that of a magnetic field produced by a rotating, uniformly charged sphere.</p>
+<p>You can zoom in and out in the animation with a trackball on your mouse and rotate the camera by clicking and dragging. With touch controls, you can zoom in and out by using two fingers or rotate the camera by holding touch and moving your finger; you can also use two fingers to pan left and right. </p>
+
+	
 	</div>
 <script type = "module">
 	       import * as THREE from 'https://esm.sh/three';
