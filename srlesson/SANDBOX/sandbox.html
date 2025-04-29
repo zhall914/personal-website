@@ -40,6 +40,7 @@
 
     <!-- Main text below the applet -->
     <div class="main-text">
+      <p> <b>FOR BEST RESULTS ON MOBILE BROWSWER, ZOOM IN AS MUCH AS POSSIBLE AND WAIT 1 MINUTE AFTER LOADING BEFORE USING. </b></p>
       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This application was written to help facilitate understanding of the structure of Minkowski spacetime starting with Hermann Bondi's "Relativity and Common Sense." It maps one set of space-time coordinatizations to another related to it by a Lorentz boost: the ways assignments of locations and times must relate for relatively moving frames. You can add events fixed in one coordinate system / frame of reference and slide the "v" bar to see how the coordinates transform according to the relatively moving frame. You can also choose whether or not to add "light pulses" or null cones that intersect with the x = 0 point of the frame to which they are added. There is also an option to add lines of constant position within a frame of reference ("rest lines") or constant time ("global time lines" or planes of simultaneity represented in 1-d). This allows visualization of many thought-experiments one encounters in learning Special Relativity. Additionally, one can choose whether or not to "display space-time grids" i.e. lines of constant position or time (respective spacings of 1 light-second and 1 second) in a given coordinate system as mapped into the other coordinate system by a Lorentz boost. Finally, one can choose whether or not to display "hyperbolas" which mark lines of constant proper time and proper distance. One can see that events stay placed on these hyperbolas no matter how they are mapped into coordinate systems, such that they represent the invariant notion of temporal and spatial separation.</p>
        <p>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For more explanation, some examples of how it can be used to visualize classic thought experiments encountered in learning Special Relativity, and an effort to use the apps to come to understand the structure of Minkowski spacetime with the help of Bondi's book, see <a href="https://zhall914.github.io/personal-website/srlesson/SRLesson.html" target="_blank">this webpage</a>.
@@ -57,35 +58,7 @@
       (async function () {
         await cheerpjInit();
         const display = cheerpjCreateDisplay(900, 900);
-      
-  const container = document.getElementById('applet-container');
-
-    // Set container to fill the screen
-    Object.assign(container.style, {
-      width: '100vw',
-      height: '100vh',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#000', // optional
-      overflow: 'hidden',
-      touchAction: 'manipulation'
-    });
-
-    // Function to resize canvas to fit container with 1:1 aspect ratio
-    function resizeCanvas() {
-      const size = Math.min(container.clientWidth, container.clientHeight);
-      display.style.width = size + 'px';
-      display.style.height = size + 'px';
-    }
-
-    // Run resize on load and on window resize
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    container.appendChild(display);
-
-
+        document.getElementById('applet-container').appendChild(display);
         await cheerpjRunJar("/app/personal-website/srlesson/SANDBOX/SANDBOX.jar");
       })();
     </script>
