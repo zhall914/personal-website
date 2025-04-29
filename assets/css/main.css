@@ -727,7 +727,14 @@ input, select, textarea {
 			display: block;
 			margin: 0 auto 3em auto;
 		}
-/* List */
+		figcaption {
+			font-size: 0.9em;
+			color: #555;
+			margin-top: 0.5em;
+			font-style: italic;
+		  }
+
+		/* List */
 
 	ol {
 		list-style: decimal;
