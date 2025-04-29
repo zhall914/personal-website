@@ -50,10 +50,31 @@
     </div>
 
     <script>
+
+
+
+
       (async function () {
         await cheerpjInit();
         const display = cheerpjCreateDisplay(900, 900);
+        display.style.width = "100%";
+        display.style.height = "auto";
+        display.style.maxHeight = "100vh";
+
+        // Also make sure the container fits the screen
+        const container = document.getElementById('applet-container');
+        container.style.width = "100%";
+        container.style.height = "100vh";
+        container.style.display = "flex";
+        container.style.alignItems = "center";
+        container.style.justifyContent = "center";
+        container.style.backgroundColor = "#000"; // optional
+        container.style.touchAction = "manipulation";
+
+
         document.getElementById('applet-container').appendChild(display);
+
+
         await cheerpjRunJar("/app/personal-website/srlesson/SANDBOX/SANDBOX.jar");
       })();
     </script>
