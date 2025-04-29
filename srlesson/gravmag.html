@@ -4,23 +4,57 @@
 
 
 	
-<link rel="stylesheet" type="text/css" href="gmstyle.css">
+	<style>
+		html, body {
+  height: 100%;            /* Make the body take up the full height of the viewport */
+  margin: 0;               /* Remove default margin on body */
+         /* Set flexbox layout on the body */
+  justify-content: center; /* Center horizontally */
+ 
+}
+		
+		/* Style for the main text */
+
+		.main-text {
+		  font-family: 'Palatino', serif; /* Palatino font */
+		  font-size: 1.2em;
+		  text-align: center;
+		  justify-content: center;
+        align-items: center;
+		width: 80%;
+		  margin-left: 10%;  /* Half the size of the applet*/
+		  margin-right: 10%; /* Half the size of the applet*/
+		  margin-top: 2rem;   /* Adds more space between the applet and the text */
+		}
+		
+		/* Optional: Style for the container of the applet and the text */
+		#anim {
+		width: 80%;
+		aspect-ratio: 1 / 1;
+		margin-left: 10%;
+		margin-right: 10%;
+		margin-top: 2rem; /* Applet margin */
+		}
+	  </style>
 <center>Written by <a href="https://zhall914.github.io/personal-website" target="_blank"> Zachary Hall</a></center>
 </head>
 <body>
-	<style>
-        body { margin: 0; overflow: hidden; }
-        #anim { position: fixed; top: 100px; left: 0; right: 0; bottom: 0; }
-    </style>
+
+
+
+
 
 <div id = "anim" ></div>
+
+<div class="main-text"> 
+	<p>	This is an animation of the frame-dragging effect.</p>
+	</div>
 <script type = "module">
 	       import * as THREE from 'https://esm.sh/three';
             import { OrbitControls } from 'https://esm.sh/three/examples/jsm/controls/OrbitControls.js';
 
 	window.onload = function() {
-		document.getElementById("anim").style.display = "block";
-
+		
 
 
 
@@ -42,19 +76,15 @@
     angle1 = 0;
    let  scene = new THREE.Scene();
 
-    let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+   
+	var container = document.getElementById( 'anim' );
+              
+	let camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 1, 10000);
     camera.position.z = fra * 550;
 
     let renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-	var container = document.getElementById( 'anim' );
-console.log(container);  // Debugging: Check if the container is found
-if (container) {
-                container.appendChild(renderer.domElement);
-            } else {
-                console.error("Element with id 'anim' is not found.");
-            }
-
+    renderer.setSize(container.clientWidth, container.clientHeight);
+	container.appendChild(renderer.domElement);
     let controls = new OrbitControls(camera, renderer.domElement);
     controls.addEventListener('change', render);
 
@@ -915,11 +945,7 @@ scene.add(r120);
 
 
 
- renderer = new THREE.WebGLRenderer();
- renderer.setSize( window.innerWidth, window.innerHeight );
 
-
- document.body.appendChild( renderer.domElement );
 
 
 	
@@ -952,9 +978,9 @@ function rotateAroundWorldAxis(object, axis, angle) {
 
 
 function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.aspect = container.clientHeight / container.clientHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setSize(container.clientWidth, container.clientHeight);
         }
 
 
