@@ -703,7 +703,8 @@ input, select, textarea {
 			.image.main img {
 				width: 100%;
 			}
-
+		
+	
 		@media screen and (max-width: 736px) {
 
 			.image.main {
@@ -719,7 +720,12 @@ input, select, textarea {
 			}
 
 		}
-
+		img.half{
+			width: 50%;
+			height: auto;
+			display: block;
+			margin: 0 auto;
+		}
 /* List */
 
 	ol {
